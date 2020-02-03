@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>家园地图</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #loadingDiv {
+            display: block;
+        }
+
+        #root {
+            display: block;
+        }
+    </style>
+    <style>
+.MuiCircularProgress-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+}
+.MuiCircularProgress-root {
+  display: inline-block;
+}
+.MuiCircularProgress-static {
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiCircularProgress-indeterminate {
+  animation: MuiCircularProgress-keyframes-circular-rotate 1.4s linear infinite;
+}
+.MuiCircularProgress-colorPrimary {
+  color: #3f51b5;
+}
+.MuiCircularProgress-colorSecondary {
+  color: #f50057;
+}
+.MuiCircularProgress-svg {
+  display: block;
+}
+.MuiCircularProgress-circle {
+  stroke: currentColor;
+}
+.MuiCircularProgress-circleStatic {
+  transition: stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiCircularProgress-circleIndeterminate {
+  animation: MuiCircularProgress-keyframes-circular-dash 1.4s ease-in-out infinite;
+  stroke-dasharray: 80px, 200px;
+  stroke-dashoffset: 0px;
+}
+@-webkit-keyframes MuiCircularProgress-keyframes-circular-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes MuiCircularProgress-keyframes-circular-dash {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0px;
+  }
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}
+
+@-webkit-keyframes MuiCircularProgress-keyframes-circular-dash {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0px;
+  }
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}
+@keyframes MuiCircularProgress-keyframes-circular-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.MuiCircularProgress-circleDisableShrink {
+  animation: none;
+}
+</style>
+    <meta name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no,shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- <meta name="viewport"
+        content="width=device-width, initial-scale=1" /> -->
+        
+        <!-- <script crossorigin src="../material-ui.production.min.js"></script> -->
+</head>
+
+<body>
+    <div id="loadingDiv" style='position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);'><div class="MuiCircularProgress-box">
+    <div class="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        role="progressbar" style="width: 50px; height: 50px;">
+        <svg class="MuiCircularProgress-svg" viewBox="22 22 44 44">
+            <circle class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate" cx="44" cy="44" r="20.2"
+                fill="none" stroke-width="3.6"></circle>
+        </svg>
+    </div>
+</div></div>
+    <div id="root"></div>
+    <!-- bootcss cdn -->
+    <!-- 
+    <link href='https://cdn.bootcss.com/mapbox-gl/0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <script crossorigin src="https://cdn.bootcss.com/react/16.10.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdn.bootcss.com/react-dom/16.10.2/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://cdn.bootcss.com/mapbox-gl/0.53.1/mapbox-gl.js"></script>
+    <script crossorigin src="https://unpkg.com/@material-ui/core@4.8.3/umd/material-ui.production.min.js"></script>
+    <script crossorigin src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"></script>
+     -->
+
+    <!-- staticfile cdn 由七牛云提供，技术社区掘金支持 -->
+    <link href='https://cdn.staticfile.org/mapbox-gl/0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <script crossorigin src="https://cdn.staticfile.org/react/16.10.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdn.staticfile.org/react-dom/16.10.2/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://cdn.staticfile.org/mapbox-gl/0.53.1/mapbox-gl.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/@material-ui/core@4.8.3/umd/material-ui.production.min.js"></script>
+    <!-- <script crossorigin src="https://cdn.staticfile.org/babel-polyfill/7.8.3/polyfill.min.js"></script> -->
+    
+    <!-- jsdelivr cdn -->
+    <!-- <script crossorigin src="https://cdn.jsdelivr.net/npm/react@16.10.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/react-dom@16.10.2/umd/react-dom.production.min.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/mapbox-gl@0.53.1/dist/mapbox-gl.css' rel='stylesheet' />
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/mapbox-gl@0.53.1/dist/mapbox-gl.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/@material-ui/core@4.8.3/umd/material-ui.production.min.js"></script>
+    <script crossorigin src="https://cdn.jsdelivr.net/npm/babel-polyfill@6.23.0/dist/polyfill.min.js"></script>
+     -->
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("loadingDiv").style.display = "none";
+            // document.getElementById("root").style.display = "block";
+        }
+    </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ecolink/public-homemap@master/runtime.290b5029.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ecolink/public-homemap@master/vendors~index.84150b38.chunk.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ecolink/public-homemap@master/index.04f8e978.chunk.js"></script></body>
+
+<!-- <script>
+    var WebFontConfig = {
+        google: { families: ['Roboto:300,400,500,700:latin'] }
+    };
+    (function () {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script> -->
+
+</html>
